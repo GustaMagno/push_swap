@@ -1,44 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lstfunc.c                                          :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gustoliv <gustoliv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/05 21:05:09 by gustoliv          #+#    #+#             */
-/*   Updated: 2025/09/06 01:18:09 by gustoliv         ###   ########.fr       */
+/*   Created: 2025/09/05 20:47:32 by gustoliv          #+#    #+#             */
+/*   Updated: 2025/09/05 21:07:35 by gustoliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-
-void	lst_add_back(t_node *head)
+long	ft_atol(const char *str)
 {
-	
-}
-
-int	put_stack(t_stack **stack, char **args)
-{
-	t_node	*list;
-	int		i;
+	unsigned int	i;
+	int				check;
+	long			nb;
 
 	i = 0;
-	if (!parsing(args))
-		return (0);
-	while (args[i])
+	check = 0;
+	nb = 0;
+	while ((str[i] > 8 && str[i] < 14) || str[i] == 32)
+		i++;
+	if (str[i] == '-' || str[i] == '+')
 	{
-		if (i == 0)
-		{
-			list = put_node(args[i], list);	
-			(*stack)->first = list;
-		}
-		else
-			list = put_node(args[i], list);
-		if (!list)
-			return (0);
+		if (str[i] == '-')
+			check++;
 		i++;
 	}
-	(*stack)->last = list;
-	return (1);
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		nb = (nb * 10) + (str[i] - 48);
+		i++;
+	}
+	if (check == 1)
+		nb *= -1;
+	return (nb);
 }

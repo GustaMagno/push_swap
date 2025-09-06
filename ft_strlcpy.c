@@ -1,44 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lstfunc.c                                          :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gustoliv <gustoliv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/05 21:05:09 by gustoliv          #+#    #+#             */
-/*   Updated: 2025/09/06 01:18:09 by gustoliv         ###   ########.fr       */
+/*   Created: 2025/04/11 12:03:24 by gustoliv          #+#    #+#             */
+/*   Updated: 2025/09/06 00:07:21 by gustoliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-
-void	lst_add_back(t_node *head)
+static size_t	ft_strlen(const char *str)
 {
-	
-}
-
-int	put_stack(t_stack **stack, char **args)
-{
-	t_node	*list;
-	int		i;
+	size_t	i;
 
 	i = 0;
-	if (!parsing(args))
-		return (0);
-	while (args[i])
-	{
-		if (i == 0)
-		{
-			list = put_node(args[i], list);	
-			(*stack)->first = list;
-		}
-		else
-			list = put_node(args[i], list);
-		if (!list)
-			return (0);
+	while (str[i] != '\0')
 		i++;
+	return (i);
+}
+
+size_t	ft_strlcpy(char *dest, const char *src, size_t size)
+{
+	size_t	i;
+
+	i = 0;
+	if (size != 0)
+	{
+		while (i < size - 1 && src[i])
+		{
+			dest[i] = src[i];
+			i++;
+		}
+		dest[i] = '\0';
 	}
-	(*stack)->last = list;
-	return (1);
+	return (ft_strlen(src));
 }

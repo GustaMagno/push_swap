@@ -3,7 +3,13 @@ CC		= cc
 CFLAGS	= -g -O3 -Iinclude
 
 
-SRCS	= $(shell find ./src -name "*.c")
+SRCS	= ft_split.c \
+			ft_atol.c \
+			ft_strlcpy.c \
+			parsing.c \
+			push_swap.c \
+			lstfunc.c \
+
 OBJS	= $(SRCS:.c=.o)
 
 all: $(NAME)
