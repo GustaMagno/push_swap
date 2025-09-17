@@ -12,33 +12,82 @@
 
 #include "push_swap.h"
 
-
-void	lst_add_back(t_node *head)
+t_node	*new_node(void *content)
 {
-	
+	t_node	*new_node;
+
+	new_node = malloc(sizeof(t_node));
+	if (!new_node)
+		return (NULL);
+	new_node->previous = NULL;
+	new_node->content = content;
+	new_node->next = NULL;
+	return (new_node);
+}
+void	lst_add_back(t_node **list, t_node *node, t_stack **stack)
+{
+	t_node	*temp;
+
+	if (!list || !node)
+		return ;
+	temp = *list;
+	if (!*list)
+	{
+		*list = node;
+		(*stack)->last = node;
+		(*stack)->first = node;
+		return ;
+	}
+	temp = *list;
+	while (temp->next != NULL)
+		temp = temp->next;
+	node->previous = temp;
+	temp->next = node;
+	(*stack)->last = node;
 }
 
-int	put_stack(t_stack **stack, char **args)
+void	put_stack2(char **args, t_node **list, t_stack **stack)
 {
-	t_node	*list;
 	int		i;
+	long	*temp_c;
+	t_node	*temp;
 
 	i = 0;
-	if (!parsing(args))
-		return (0);
 	while (args[i])
 	{
-		if (i == 0)
-		{
-			list = put_node(args[i], list);	
-			(*stack)->first = list;
-		}
-		else
-			list = put_node(args[i], list);
-		if (!list)
-			return (0);
+		temp_c = malloc(sizeof(long));
+		if (!temp_c)
+			return ;
+		*temp_c = ft_atol(args[i]);
+		temp = new_node(temp_c);
+		lst_add_back(list, temp, stack);
+		if (!temp)
+			return ;
 		i++;
 	}
-	(*stack)->last = list;
-	return (1);
+}
+
+
+t_stack	*put_stack(char **args)
+{
+	t_node	*list;
+	t_stack	*stack;
+	char	**clean_arg;
+	int		i;
+
+	i = 1;
+	list = NULL;
+	stack = malloc(sizeof(t_stack));
+	if (!stack)
+		exit (1);
+	while (args[i])
+	{
+		clean_arg = ft_split(args[i], ' ');
+		if (!clean_arg)
+			return (NULL);
+		put_stack2(clean_arg, &list, &stack);
+		free_arr(clean_arg);
+		i++;
+	}
+	return (stack);
 }

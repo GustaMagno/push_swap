@@ -12,6 +12,34 @@
 
 #include "push_swap.h"
 
+int	check_content(t_node *list)
+{
+	void	*tempcontent;
+	t_node	*node;
+	t_node	*head;
+	int		i;
+	int		j;
+
+	i = 0;
+	head = list;
+	while (list)
+	{
+		j = 0;
+		node = head;
+		tempcontent = list->content;
+		while (node)
+		{
+			if (*(int *)node->content == *(int *)tempcontent && i != j)
+				return (0);
+			node = node->next;
+			j++;
+		}
+		list = list->next;
+		i++;
+	}
+	return (1);
+}
+
 int	check_int(char **arr)
 {
 	int	i;
@@ -31,13 +59,10 @@ int	check_numbers(char *str)
 	int	i;
 
 	i = 0;
-	if (((str[0] == '-' || str[0] == '+') && (str[1] == '-' || str[1] == '+'))
-	|| str[0] == '0')
-		return (0);
-	i += (str[0] == '-' || str[0] == '+');
 	while (str[i])
 	{
-		if (str[i] < '0' || str[i] > '9')
+		i += (str[i] == '-' || str[i] == '+');
+		if ((str[i] < '0' || str[i] > '9') && str[i] != 32 && str[i] != 9)
 			return (0);
 		i++;
 	}
@@ -49,10 +74,10 @@ int	parsing(char **args)
 	int	i;
 	int	j;
 
-	i = 0;
+	i = 1;
 	while (args[i])
 	{
-		if (!check_numbers(args[i]))
+		if (!check_numbers(args[i]) || !(*args[i]))
 			return (0);
 		i++;
 	}

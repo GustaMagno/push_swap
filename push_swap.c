@@ -12,6 +12,19 @@
 
 #include "push_swap.h"
 
+void	print_stack(t_node *fnode)
+{
+	printf("STACK:\n");
+	while (fnode)
+	{
+		if (!fnode->next)
+			break;
+		printf(" %i -", *(int *)fnode->content);
+		fnode = fnode->next;
+	}
+	printf(" %i \n", *(int *)fnode->content);
+}
+
 int	main(int argc, char **argv)
 {
 	int		i;
@@ -19,19 +32,22 @@ int	main(int argc, char **argv)
 	t_stack	*stack_b;
 
 	i = 1;
-	if (argc < 2)
+	if (argc < 2 || !parsing(argv))
 		return (write(2, "Error\n", 7), 1);
-	stack_a = malloc(sizeof(t_stack));
+	stack_a = put_stack(argv);
+	if (!check_content(stack_a->first))
+		return (write(2, "Error\n", 7), 1);
 	stack_b = malloc(sizeof(t_stack));
-	// if (!stack_a || !stack_b)
-	// 	free_tudo()
-	while (i < argc)
-	{
-		if (!(*argv[i]))
-			return (write(2, "Error\n", 7), 1);
-		if (!put_stack(stack_a, ft_split(argv[i], ' ')))
-			return (1);
-		i++;
-	}
+	stack_b->first = NULL;
+	stack_b->last = NULL;
+	if (!stack_b)
+		return (0);
+	push_stack(&stack_b, &stack_a, "pb\n");
+	push_stack(&stack_b, &stack_a, "pb\n");
+	print_stack(stack_a->first);
+	print_stack(stack_b->first);
+	swap(NULL, &stack_b);
+	print_stack(stack_a->first);
+	print_stack(stack_b->first);
 	return (0);
 }

@@ -9,6 +9,10 @@ SRCS	= ft_split.c \
 			parsing.c \
 			push_swap.c \
 			lstfunc.c \
+			free_push.c \
+			operations/push.c \
+			operations/rotate.c \
+			operations/swap.c \
 
 OBJS	= $(SRCS:.c=.o)
 
