@@ -1,6 +1,6 @@
 NAME	= push_swap
 CC		= cc
-CFLAGS	= -g -O3 -Iinclude
+CFLAGS	= -Wall -Wextra -Werror
 
 
 SRCS	= ft_split.c \
@@ -12,6 +12,7 @@ SRCS	= ft_split.c \
 			free_push.c \
 			operations/push.c \
 			operations/rotate.c \
+			operations/rrotate.c \
 			operations/swap.c \
 
 OBJS	= $(SRCS:.c=.o)

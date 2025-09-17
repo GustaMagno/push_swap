@@ -6,7 +6,7 @@
 /*   By: gustoliv <gustoliv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 18:02:40 by gustoliv          #+#    #+#             */
-/*   Updated: 2025/09/05 21:49:01 by gustoliv         ###   ########.fr       */
+/*   Updated: 2025/09/17 22:43:46 by gustoliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,18 @@
 
 int	check_content(t_node *list)
 {
-	void	*tempcontent;
 	t_node	*node;
-	t_node	*head;
-	int		i;
-	int		j;
-
-	i = 0;
-	head = list;
+	
 	while (list)
 	{
-		j = 0;
-		node = head;
-		tempcontent = list->content;
+		node = list;
 		while (node)
 		{
-			if (*(int *)node->content == *(int *)tempcontent && i != j)
+			if (node->content == list->content && node != list)
 				return (0);
 			node = node->next;
-			j++;
 		}
 		list = list->next;
-		i++;
 	}
 	return (1);
 }
@@ -72,7 +62,6 @@ int	check_numbers(char *str)
 int	parsing(char **args)
 {
 	int	i;
-	int	j;
 
 	i = 1;
 	while (args[i])
