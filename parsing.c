@@ -6,7 +6,7 @@
 /*   By: gustoliv <gustoliv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 18:02:40 by gustoliv          #+#    #+#             */
-/*   Updated: 2025/09/17 22:43:46 by gustoliv         ###   ########.fr       */
+/*   Updated: 2025/09/19 00:30:34 by gustoliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,22 @@ int	check_content(t_node *list)
 		list = list->next;
 	}
 	return (1);
+}
+
+int	in_order(t_node *node)
+{
+	int	nb;
+	
+	nb = node->content;
+	while (node)
+	{
+		if (nb > node->content)
+			return (1);
+		else
+			nb = node->content;
+		node = node->next;
+	}
+	return (0);
 }
 
 int	check_int(char **arr)

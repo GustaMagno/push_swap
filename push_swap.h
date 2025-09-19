@@ -6,7 +6,7 @@
 /*   By: gustoliv <gustoliv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 18:02:31 by gustoliv          #+#    #+#             */
-/*   Updated: 2025/09/17 23:19:27 by gustoliv         ###   ########.fr       */
+/*   Updated: 2025/09/19 20:44:42 by gustoliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 typedef	struct s_node
 {
 	struct s_node	*previous;
+	int				index;
 	int				content;
 	struct s_node	*next;
 }	t_node;
@@ -55,5 +56,6 @@ void		rrr(t_stack *stack_a, t_stack *stack_b);
 void		rra(t_stack *stack);
 void		rrb(t_stack *stack);
 void		free_node(t_node *node);
+int			in_order(t_node *node);
 
 #endif
