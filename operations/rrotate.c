@@ -7,11 +7,11 @@ static void	rrotate(t_stack *stack, char *str)
 
 	first = stack->first;
 	last = stack->last;
-	last->previous->next = NULL;
-	stack->last = last->previous;
-	last->previous = NULL;
-	last->next = first;
-	first->previous = last;
+	while (first->next != last)
+		first = first->next;
+	stack->last = first;
+	first->next = NULL;
+	last->next = stack->first;
 	stack->first = last;
 	if (str)
 		write(1, str, 5);

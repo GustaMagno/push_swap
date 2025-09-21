@@ -6,20 +6,44 @@
 /*   By: gustoliv <gustoliv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 18:02:27 by gustoliv          #+#    #+#             */
-/*   Updated: 2025/09/20 00:24:28 by gustoliv         ###   ########.fr       */
+/*   Updated: 2025/09/21 01:14:22 by gustoliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		list_len(t_node *node)
-{
-	
-}
 
 void	put_index(t_node *node)
 {
-	
+	t_node	*head;
+	t_node	*temp;
+
+	head = node;
+	while (node)
+	{
+		temp = head;
+		node->index = 0;
+		while (temp)
+		{
+			node->index += (node->content > temp->content);
+			temp = temp->next;
+		}
+		node = node->next;
+	}
+}
+
+void	cases(int len, t_stack *stack_a, t_stack *stack_b)
+{
+	if (len == 2)
+		ra(stack_a);
+	else if (len == 3)
+		order3(stack_a);
+	else if (len == 4)
+		order4(stack_a, stack_b);
+	// else if (len == 5)
+	// 	order5();
+	// else
+	// 	radix(stack_a, stack_b);
 }
 
 void	print_stack(t_node *fnode)
@@ -27,12 +51,9 @@ void	print_stack(t_node *fnode)
 	printf("STACK:\n");
 	while (fnode)
 	{
-		if (!fnode->next)
-			break;
-		printf(" %i -", fnode->content);
+		printf(" Content: %i, index: %i\n", fnode->content, fnode->index);
 		fnode = fnode->next;
 	}
-	printf(" %i \n", fnode->content);
 }
 
 int	main(int argc, char **argv)
@@ -48,9 +69,11 @@ int	main(int argc, char **argv)
 	stack_b = (t_stack){.first=NULL, .last=NULL};
 	if (!check_content(stack_a.first))
 		return (free_node(stack_a.first), write(2, "Error\n", 7), 1);
-	if (!in_order(stack_a.first))
-		return (0);
+	if (in_order(stack_a.first))
+		return (free_node(stack_a.first), 0);
 	put_index(stack_a.first);
+	cases(lst_size(stack_a.first), &stack_a, &stack_b);
+	print_stack(stack_a.first);
 	free_node(stack_a.first);
 	free_node(stack_b.first);
 	return (0);

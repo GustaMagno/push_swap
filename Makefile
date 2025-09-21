@@ -10,6 +10,8 @@ SRCS	= ft_split.c \
 			push_swap.c \
 			lstfunc.c \
 			free_push.c \
+			radix.c \
+			cases.c \
 			operations/push.c \
 			operations/rotate.c \
 			operations/rrotate.c \

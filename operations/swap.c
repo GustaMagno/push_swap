@@ -7,8 +7,6 @@ static void	swap(t_stack *stack, char *str)
 
 	f_node = stack->first;
 	se_node = f_node->next;
-	se_node->previous = NULL;
-	f_node->previous = se_node;
 	f_node->next = se_node->next;
 	se_node->next = f_node;
 	stack->first = se_node;

@@ -7,10 +7,8 @@ static void	rotate(t_stack *stack, char *str)
 
 	first = stack->first;
 	last = stack->last;
-	first->next->previous = NULL;
 	last->next = first;
 	stack->first = first->next;
-	first->previous = last;
 	first->next = NULL;
 	stack->last = first;
 	if (str)

@@ -6,7 +6,7 @@
 /*   By: gustoliv <gustoliv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 21:05:09 by gustoliv          #+#    #+#             */
-/*   Updated: 2025/09/19 20:46:07 by gustoliv         ###   ########.fr       */
+/*   Updated: 2025/09/20 23:41:48 by gustoliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ t_node	*new_node(int content)
 	new_node = malloc(sizeof(t_node));
 	if (!new_node)
 		return (NULL);
-	new_node->previous = NULL;
 	new_node->content = content;
 	new_node->index = 0;
 	new_node->next = NULL;
@@ -42,7 +41,6 @@ void	lst_add_back(t_node **list, t_node *node, t_stack *stack)
 	temp = *list;
 	while (temp->next != NULL)
 		temp = temp->next;
-	node->previous = temp;
 	temp->next = node;
 	stack->last = node;
 }

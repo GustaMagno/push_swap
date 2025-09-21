@@ -6,19 +6,21 @@
 /*   By: gustoliv <gustoliv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 18:02:40 by gustoliv          #+#    #+#             */
-/*   Updated: 2025/09/19 00:30:34 by gustoliv         ###   ########.fr       */
+/*   Updated: 2025/09/20 23:46:22 by gustoliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	check_content(t_node *list)
+int	check_content(t_node *head)
 {
 	t_node	*node;
+	t_node *list;
 	
+	list = head;
 	while (list)
 	{
-		node = list;
+		node = head;
 		while (node)
 		{
 			if (node->content == list->content && node != list)
@@ -38,12 +40,12 @@ int	in_order(t_node *node)
 	while (node)
 	{
 		if (nb > node->content)
-			return (1);
+			return (0);
 		else
 			nb = node->content;
 		node = node->next;
 	}
-	return (0);
+	return (1);
 }
 
 int	check_int(char **arr)

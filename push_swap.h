@@ -6,7 +6,7 @@
 /*   By: gustoliv <gustoliv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 18:02:31 by gustoliv          #+#    #+#             */
-/*   Updated: 2025/09/19 20:44:42 by gustoliv         ###   ########.fr       */
+/*   Updated: 2025/09/21 01:19:34 by gustoliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 typedef	struct s_node
 {
-	struct s_node	*previous;
+	// struct s_node	*previous;
 	int				index;
 	int				content;
 	struct s_node	*next;
@@ -40,7 +40,6 @@ int			parsing(char **args);
 long		ft_atol(const char *str);
 void		free_arr(char **str);
 int			check_content(t_node *list);
-void		lst_add_back(t_node **list, t_node *node, t_stack *stack);
 t_node		*new_node(int content);
 void		pb(t_stack *stack_a, t_stack *stack_b);
 void		pa(t_stack *stack_a, t_stack *stack_b);
@@ -57,5 +56,10 @@ void		rra(t_stack *stack);
 void		rrb(t_stack *stack);
 void		free_node(t_node *node);
 int			in_order(t_node *node);
+void		radix(t_stack *stack_a, t_stack *stack_b);
+int			lst_size(t_node *node);
+void		order3(t_stack *stack_a);
+void		order4(t_stack *stack_a, t_stack *stack_b);
+
 
 #endif
