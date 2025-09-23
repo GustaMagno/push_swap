@@ -60,6 +60,7 @@ void		radix(t_stack *stack_a, t_stack *stack_b);
 int			lst_size(t_node *node);
 void		order3(t_stack *stack_a);
 void		order4(t_stack *stack_a, t_stack *stack_b);
+void		order5(t_stack *stack_a);
 
 
 #endif

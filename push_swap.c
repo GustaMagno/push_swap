@@ -40,10 +40,15 @@ void	cases(int len, t_stack *stack_a, t_stack *stack_b)
 		order3(stack_a);
 	else if (len == 4)
 		order4(stack_a, stack_b);
-	// else if (len == 5)
-	// 	order5();
-	// else
-	// 	radix(stack_a, stack_b);
+	else if (len == 5)
+	{
+		order5(stack_a);
+		pb(stack_a, stack_b);
+		order4(stack_a, stack_b);
+		pa(stack_a, stack_b);
+	}
+	else
+		radix(stack_a, stack_b);
 }
 
 void	print_stack(t_node *fnode)
@@ -58,11 +63,9 @@ void	print_stack(t_node *fnode)
 
 int	main(int argc, char **argv)
 {
-	int		i;
 	t_stack	stack_a;
 	t_stack	stack_b;
 
-	i = 1;
 	if (argc < 2 || !parsing(argv))
 		return (write(2, "Error\n", 7), 1);
 	stack_a = put_stack(argv);
