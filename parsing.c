@@ -36,6 +36,8 @@ int	in_order(t_node *node)
 {
 	int	nb;
 	
+	if (!node)
+		return(write(2, "Error\n", 7), 1);
 	nb = node->content;
 	while (node)
 	{

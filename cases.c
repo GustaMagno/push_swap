@@ -23,13 +23,12 @@ void	order3(t_stack *stack_a)
 	th_node = stack_a->first->next->next->content;
 	if (f_node > th_node && f_node > s_node && s_node > th_node)
 	{
-
 		ra(stack_a);
 		sa(stack_a);
 	}
 	else if (f_node < th_node && f_node < s_node && s_node > th_node)
 	{
-		rra(stack_a);
+		rra(stack_a); 
 		sa(stack_a);
 	}
 	else if (f_node > s_node && f_node < th_node)

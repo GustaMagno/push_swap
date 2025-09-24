@@ -21,7 +21,6 @@
 
 typedef	struct s_node
 {
-	// struct s_node	*previous;
 	int				index;
 	int				content;
 	struct s_node	*next;

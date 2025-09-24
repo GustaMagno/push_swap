@@ -3,15 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   radix.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gustoliv <gustoliv@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 20:29:28 by gustoliv          #+#    #+#             */
-/*   Updated: 2025/09/21 00:01:40 by gustoliv         ###   ########.fr       */
+/*   Updated: 2025/09/24 01:01:26 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+int	max_bit(int	index)
+{
+	int	i;
+
+	i = 0;
+	while ((index >> i) != 0)
+		i++;
+	return (i);
+}
 
 int	lst_size(t_node *node)
 {
@@ -30,12 +39,14 @@ void	radix(t_stack *stack_a, t_stack *stack_b)
 {
 	int		lsb;
 	int		i;
+	int		len_index;
 	t_node	*node;
 	int		len_stack;
 
 	lsb = 0;
 	len_stack = lst_size(stack_a->first);
-	while (lsb < 32)
+	len_index = max_bit(len_stack - 1);
+	while (lsb < len_index)
 	{
 		i = 0;
 		while (i < len_stack)
@@ -50,7 +61,5 @@ void	radix(t_stack *stack_a, t_stack *stack_b)
 		while (stack_b->first)
 			pa(stack_a, stack_b);
 		lsb++;
-		if (in_order(stack_a->first) && !stack_b->first)
-			break;
 	}
 }
