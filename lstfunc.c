@@ -54,6 +54,7 @@ void	put_stack2(char **args, t_node **list, t_stack *stack)
 	i = 0;
 	while (args[i])
 	{
+		exit(0);
 		temp_c = (int)ft_atol(args[i]);
 		temp = new_node(temp_c);
 		lst_add_back(list, temp, stack);
@@ -79,7 +80,7 @@ t_stack	put_stack(char **args)
 	{
 		clean_arg = ft_split(args[i], ' ');
 		if (!clean_arg)
-			return stack;
+			return (stack);
 		put_stack2(clean_arg, &list, &stack);
 		free_arr(clean_arg);
 		i++;

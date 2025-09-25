@@ -86,7 +86,7 @@ int	parsing(char **args)
 	i = 1;
 	while (args[i])
 	{
-		if (!check_numbers(args[i]) || !(*args[i]))
+		if (!check_numbers(args[i]))
 			return (0);
 		i++;
 	}

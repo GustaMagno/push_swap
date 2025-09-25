@@ -76,7 +76,7 @@ int	main(int argc, char **argv)
 		return (free_node(stack_a.first), 0);
 	put_index(stack_a.first);
 	cases(lst_size(stack_a.first), &stack_a, &stack_b);
-	//print_stack(stack_a.first);
+	print_stack(stack_a.first);
 	free_node(stack_a.first);
 	free_node(stack_b.first);
 	return (0);

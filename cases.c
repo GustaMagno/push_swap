@@ -91,10 +91,3 @@ void	order5(t_stack *stack_a)
 	else if (l_nod < f_nod && l_nod < s_nod && l_nod < t_nod && l_nod < fh_nod)
 		rra (stack_a);
 }
-
-// 1 2 3 4 5
-// 2 1 3 4 5
-// 3 2 1 4 5
-// 3 2 4 1 5
-// 4 2 3 5 1
-// void	order5()
