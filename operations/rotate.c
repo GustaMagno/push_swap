@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rotate.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gustoliv <gustoliv@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/26 21:23:03 by gustoliv          #+#    #+#             */
+/*   Updated: 2025/09/26 21:23:03 by gustoliv         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
 static void	rotate(t_stack *stack, char *str)
@@ -12,7 +24,7 @@ static void	rotate(t_stack *stack, char *str)
 	first->next = NULL;
 	stack->last = first;
 	if (str)
-		write(1, str, 4);
+		write(1, str, 3);
 }
 
 void	rr(t_stack *stack_a, t_stack *stack_b)
@@ -20,35 +32,13 @@ void	rr(t_stack *stack_a, t_stack *stack_b)
 	rotate(stack_a, NULL);
 	rotate(stack_b, "rr\n");
 }
+
 void	ra(t_stack *stack)
 {
 	rotate(stack, "ra\n");
 }
+
 void	rb(t_stack *stack)
 {
 	rotate(stack, "rb\n");
 }
-
-
-// sa
-
-// 10101010
-// 00110101
-// 11010101
-// 11101111
-
-// sb
-
-// 11101010
-// 00001010
-// 00000001
-
-// -19 - 0
-// -1 - 2
-// 18 - 5
-// 0  - 3
-// 1 - 4
-// -6 - 1
-
-
-

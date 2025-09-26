@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gustoliv <gustoliv@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/26 21:21:45 by gustoliv          #+#    #+#             */
+/*   Updated: 2025/09/26 21:21:45 by gustoliv         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
 void	lst_add_front(t_stack *list, t_node *node)
@@ -9,7 +21,7 @@ void	lst_add_front(t_stack *list, t_node *node)
 		list->first = node;
 		list->last = node;
 		node->next = NULL;
-		return ; 
+		return ;
 	}
 	node->next = list->first;
 	list->first = node;
@@ -28,8 +40,8 @@ void	push_stack(t_stack *src, t_stack *dest, char *str)
 		node->next = dest->first;
 	else
 		dest->last = node;
-	dest->first  = node;
-	write(1, str, 4);
+	dest->first = node;
+	write(1, str, 3);
 }
 
 void	pa(t_stack *stack_a, t_stack *stack_b)

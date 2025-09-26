@@ -24,6 +24,7 @@ t_node	*new_node(int content)
 	new_node->next = NULL;
 	return (new_node);
 }
+
 void	lst_add_back(t_node **list, t_node *node, t_stack *stack)
 {
 	t_node	*temp;
@@ -47,14 +48,13 @@ void	lst_add_back(t_node **list, t_node *node, t_stack *stack)
 
 void	put_stack2(char **args, t_node **list, t_stack *stack)
 {
-	int	i;
-	int	temp_c;
+	int		i;
+	int		temp_c;
 	t_node	*temp;
 
 	i = 0;
 	while (args[i])
 	{
-		exit(0);
 		temp_c = (int)ft_atol(args[i]);
 		temp = new_node(temp_c);
 		lst_add_back(list, temp, stack);
@@ -63,7 +63,6 @@ void	put_stack2(char **args, t_node **list, t_stack *stack)
 		i++;
 	}
 }
-
 
 t_stack	put_stack(char **args)
 {

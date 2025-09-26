@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gustoliv <gustoliv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/21 00:16:32 by gustoliv          #+#    #+#             */
-/*   Updated: 2025/09/21 01:37:55 by gustoliv         ###   ########.fr       */
+/*   Created: 2025/09/26 20:46:41 by gustoliv          #+#    #+#             */
+/*   Updated: 2025/09/26 20:46:41 by gustoliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,80 +14,81 @@
 
 void	order3(t_stack *stack_a)
 {
-	int f_node;
-	int s_node;
-	int th_node;
+	int	first;
+	int	sec;
+	int	third;
 
-	f_node = stack_a->first->content;
-	s_node = stack_a->first->next->content;
-	th_node = stack_a->first->next->next->content;
-	if (f_node > th_node && f_node > s_node && s_node > th_node)
+	first = stack_a->first->content;
+	sec = stack_a->first->next->content;
+	third = stack_a->first->next->next->content;
+	if (first > third && first > sec && sec > third)
 	{
 		ra(stack_a);
 		sa(stack_a);
 	}
-	else if (f_node < th_node && f_node < s_node && s_node > th_node)
+	else if (first < third && first < sec && sec > third)
 	{
-		rra(stack_a); 
+		rra(stack_a);
 		sa(stack_a);
 	}
-	else if (f_node > s_node && f_node < th_node)
+	else if (first > sec && first < third)
 		sa(stack_a);
-	else if (f_node > th_node && f_node < s_node)
+	else if (first > third && first < sec)
 		rra(stack_a);
-	else if (f_node > s_node && f_node > th_node && th_node > s_node)
+	else if (first > sec && first > third && third > sec)
 		ra(stack_a);
 }
 
 void	order4(t_stack *stack_a, t_stack *stack_b)
 {
-	int f_node;
-	int s_node;
-	int th_node;
-	int fh_node;
+	int	first;
+	int	sec;
+	int	third;
+	int	fourth;
 
-	f_node = stack_a->first->content;
-	s_node = stack_a->first->next->content;
-	th_node = stack_a->first->next->next->content;
-	fh_node = stack_a->first->next->next->next->content;
-	if (s_node < f_node && s_node < th_node && s_node < fh_node)
+	first = stack_a->first->content;
+	sec = stack_a->first->next->content;
+	third = stack_a->first->next->next->content;
+	fourth = stack_a->first->next->next->next->content;
+	if (sec < first && sec < third && sec < fourth)
 		sa(stack_a);
-	else if (th_node < f_node && th_node < s_node && th_node < fh_node)
+	else if (third < first && third < sec && third < fourth)
 	{
 		ra(stack_a);
 		ra(stack_a);
 	}
-	else if (fh_node < f_node && fh_node < s_node && fh_node < th_node)
+	else if (fourth < first && fourth < sec && fourth < third)
 		rra(stack_a);
 	pb(stack_a, stack_b);
 	order3(stack_a);
 	pa(stack_a, stack_b);
 }
+
 void	order5(t_stack *stack_a)
 {
-	int f_nod;
-	int s_nod;
-	int t_nod;
-	int fh_nod;
-	int l_nod;
+	int	first;
+	int	sec;
+	int	third;
+	int	fourth;
+	int	last;
 
-	f_nod = stack_a->first->content;
-	s_nod = stack_a->first->next->content;
-	t_nod = stack_a->first->next->next->content;
-	fh_nod = stack_a->first->next->next->next->content;
-	l_nod = stack_a->first->next->next->next->next->content;
-	if (s_nod < f_nod && s_nod < t_nod && s_nod < fh_nod && s_nod < l_nod)
+	first = stack_a->first->content;
+	sec = stack_a->first->next->content;
+	third = stack_a->first->next->next->content;
+	fourth = stack_a->first->next->next->next->content;
+	last = stack_a->first->next->next->next->next->content;
+	if (sec < first && sec < third && sec < fourth && sec < last)
 		sa(stack_a);
-	else if (t_nod < f_nod && t_nod < s_nod && t_nod < fh_nod && t_nod < l_nod)
+	else if (third < first && third < sec && third < fourth && third < last)
 	{
 		ra(stack_a);
 		ra(stack_a);
 	}
-	else if (fh_nod < f_nod && fh_nod < s_nod && fh_nod < t_nod && fh_nod < l_nod)
+	else if (fourth < first && fourth < sec && fourth < third && fourth < last)
 	{
 		rra(stack_a);
-		rra (stack_a);
+		rra(stack_a);
 	}
-	else if (l_nod < f_nod && l_nod < s_nod && l_nod < t_nod && l_nod < fh_nod)
-		rra (stack_a);
+	else if (last < first && last < sec && last < third && last < fourth)
+		rra(stack_a);
 }

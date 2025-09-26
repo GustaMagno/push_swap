@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   radix.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: gustoliv <gustoliv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 20:29:28 by gustoliv          #+#    #+#             */
-/*   Updated: 2025/09/24 01:01:26 by marvin           ###   ########.fr       */
+/*   Updated: 2025/09/26 21:21:28 by gustoliv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	max_bit(int	index)
+int	max_bit(int index)
 {
 	int	i;
 

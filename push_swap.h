@@ -12,21 +12,20 @@
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-#  include <limits.h>
-#  include <stdarg.h>
-#  include <stdio.h>
-#  include <stdlib.h>
-#  include <unistd.h>
-#  include <sys/time.h>
-
-typedef	struct s_node
+# include <limits.h>
+# include <stdarg.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <sys/time.h>
+typedef struct s_node
 {
 	int				index;
 	int				content;
 	struct s_node	*next;
 }	t_node;
 
-typedef	struct s_stack
+typedef struct s_stack
 {
 	t_node	*first;
 	t_node	*last;
@@ -60,6 +59,5 @@ int			lst_size(t_node *node);
 void		order3(t_stack *stack_a);
 void		order4(t_stack *stack_a, t_stack *stack_b);
 void		order5(t_stack *stack_a);
-
 
 #endif

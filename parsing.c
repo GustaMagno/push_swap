@@ -15,8 +15,8 @@
 int	check_content(t_node *head)
 {
 	t_node	*node;
-	t_node *list;
-	
+	t_node	*list;
+
 	list = head;
 	while (list)
 	{
@@ -32,21 +32,14 @@ int	check_content(t_node *head)
 	return (1);
 }
 
-int	in_order(t_node *node)
+static int	check_empty(char *str)
 {
-	int	nb;
-	
-	if (!node)
-		return(write(2, "Error\n", 7), 1);
-	nb = node->content;
-	while (node)
-	{
-		if (nb > node->content)
-			return (0);
-		else
-			nb = node->content;
-		node = node->next;
-	}
+	if (!str)
+		return (0);
+	while (*str == ' ')
+		str++;
+	if (*str == '\0')
+		return (0);
 	return (1);
 }
 
@@ -86,7 +79,7 @@ int	parsing(char **args)
 	i = 1;
 	while (args[i])
 	{
-		if (!check_numbers(args[i]))
+		if (!check_numbers(args[i]) || !check_empty(args[i]))
 			return (0);
 		i++;
 	}
@@ -94,4 +87,3 @@ int	parsing(char **args)
 		return (0);
 	return (1);
 }
-
