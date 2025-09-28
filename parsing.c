@@ -45,13 +45,22 @@ static int	check_empty(char *str)
 
 int	check_int(char **arr)
 {
-	int	i;
+	int		i;
+	int		j;
+	char	**str;
 
-	i = 0;
+	i = 1;
 	while (arr[i])
 	{
-		if (ft_atol(arr[i]) > 2147483647 || ft_atol(arr[i]) < -2147483648)
-			return (0);
+		j = 0;
+		str = ft_split(arr[i], ' ');
+		while (str[j])
+		{
+			if (ft_atol(str[j]) > 2147483647 || ft_atol(str[j]) < -2147483648)
+				return (free_arr(str), 0);
+			j++;
+		}
+		free_arr(str);
 		i++;
 	}
 	return (1);
@@ -64,6 +73,9 @@ int	check_numbers(char *str)
 	i = 0;
 	while (str[i])
 	{
+		if (((str[i] == '-' || str[i] == '+') && i != 0) && 
+		(str[i - 1] >= '0' && str[i - 1] <= '9'))
+			return (0);
 		i += (str[i] == '-' || str[i] == '+');
 		if ((str[i] < '0' || str[i] > '9') && str[i] != 32 && str[i] != 9)
 			return (0);

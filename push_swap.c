@@ -83,7 +83,9 @@ int	main(int argc, char **argv)
 	t_stack	stack_a;
 	t_stack	stack_b;
 
-	if (argc < 2 || !parsing(argv))
+	if (argc < 2)
+		return (0);
+	if (!parsing(argv))
 		return (write(2, "Error\n", 7), 1);
 	stack_a = put_stack(argv);
 	stack_b = (t_stack){.first = NULL, .last = NULL};
